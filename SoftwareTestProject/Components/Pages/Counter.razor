@@ -1,0 +1,50 @@
+﻿@page "/counter"
+@using SoftwareTestProject.Roles
+
+@inject AuthenticationStateProvider _authenticationStateProvider;
+@inject IServiceProvider _serviceProvider;
+@inject RoleHandler _roleHandler;
+
+<PageTitle>Counter</PageTitle>
+
+    <h1>Hello, world!</h1>
+
+<AuthorizeView Roles="Admin">
+    <Authorized>
+        <h1>Counter</h1>
+
+        <p role="status">Current count: @currentCount</p>
+
+        <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+    </Authorized>
+    <NotAuthorized>
+        <h1>you  are not allowed to view this</h1>
+    </NotAuthorized>
+    
+</AuthorizeView>
+ 
+
+@code {
+    public bool _isAuthenticated;
+    public bool _isAdmin;
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        var authState = await _authenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        _isAuthenticated = user.Identity.IsAuthenticated;
+        _isAdmin = user.IsInRole("Admin");
+
+        // if (_isAuthenticated)
+        //     await _roleHandler.CreateUserRolesAsync(user.Identity.Name, "Admin", _serviceProvider);
+    }
+
+
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+}

@@ -1,0 +1,10 @@
+global using Xunit;
+global using Bunit;
+global using Moq;
+global using Bunit.TestDoubles;
+global using SoftwareTestProject.Components.Pages;
+global using Microsoft.AspNetCore.Identity;
+global using SoftwareTestProject.Components.Account.Pages;
+global using SoftwareTestProject.Data;
+global using Microsoft.AspNetCore.Authorization;
+global using Microsoft.Extensions.DependencyInjection;
