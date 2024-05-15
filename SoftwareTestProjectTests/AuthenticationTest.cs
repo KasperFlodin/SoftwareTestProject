@@ -10,6 +10,7 @@ namespace SoftwareTestProjectTests
         [Fact]
         public void AuthenticationView()
         {
+            // testing our Home page for a markUpMatch
             //Arange
             var ctx = new TestContext();
             var authContext = ctx.AddTestAuthorization();
@@ -25,9 +26,10 @@ namespace SoftwareTestProjectTests
         [Fact]
         public void Test_ConnectionString()
         {
+            // Testing our connection string
             // Arrange
             var configuration = new ConfigurationBuilder()
-                .AddJsonFile("appsettings.json") // Replace with the path to your appsettings.json file
+                .AddJsonFile("appsettings.json")
                 .Build();
 
             var connectionString = configuration.GetConnectionString("DefaultConnection");
