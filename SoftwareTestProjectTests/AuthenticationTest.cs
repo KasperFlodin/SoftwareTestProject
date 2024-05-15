@@ -1,4 +1,6 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using Bunit;
+using Microsoft.AspNetCore.Components;
+using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 
 namespace SoftwareTestProjectTests
@@ -44,10 +46,10 @@ namespace SoftwareTestProjectTests
                     isConnected = false;
                 }
             }
-
             // Assert
             Assert.True(isConnected, "Failed to connect to the database using the connection string.");
         }
 
     }
+
 }
